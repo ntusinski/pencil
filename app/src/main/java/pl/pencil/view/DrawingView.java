@@ -5,16 +5,19 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 public class DrawingView extends View {
+    private static final int PAINT_COLOR = 0xFF000000;
+
     private Path drawPath;
     private Paint drawPaint;
     private Paint canvasPaint;
-    private int paintColor = 0xFF660000;
+
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
 
@@ -26,9 +29,9 @@ public class DrawingView extends View {
     private void setupDrawing() {
         drawPath = new Path();
         drawPaint = new Paint();
-        drawPaint.setColor(paintColor);
+        drawPaint.setColor(PAINT_COLOR);
         drawPaint.setAntiAlias(true);
-        drawPaint.setStrokeWidth(20);
+        drawPaint.setStrokeWidth(5);
         drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -68,5 +71,10 @@ public class DrawingView extends View {
         }
         invalidate();
         return true;
+    }
+
+    public void clear() {
+        drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        invalidate();
     }
 }
