@@ -1,11 +1,13 @@
-package pl.pencil;
+package pl.pencil.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class DrawingScreen extends Activity {
+import pl.pencil.R;
+
+public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
