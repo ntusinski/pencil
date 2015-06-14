@@ -1,4 +1,4 @@
-package pl.pencil.activity;
+package pl.tusinski.connectthedots.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import pl.pencil.R;
-import pl.pencil.view.DrawingView;
+import pl.tusinski.connectthedots.R;
+import pl.tusinski.connectthedots.view.DrawingView;
 
 public class MainActivity extends Activity {
     private DrawingView drawingView;

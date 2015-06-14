@@ -1,4 +1,4 @@
-package pl.pencil;
+package pl.tusinski.connectthedots;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package pl.pencil.view;
+package pl.tusinski.connectthedots.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
