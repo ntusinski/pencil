@@ -21,6 +21,9 @@ public class DrawingView extends View {
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
 
+    private Float lastTouchX = null;
+    private Float lastTouchY = null;
+
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupDrawing();
@@ -55,8 +58,13 @@ public class DrawingView extends View {
     public boolean onTouchEvent(@NonNull MotionEvent event) {
         float touchX = event.getX();
         float touchY = event.getY();
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if (lastTouchX != null && lastTouchY != null) {
+                    drawPath.moveTo(lastTouchX, lastTouchY);
+                    drawPath.lineTo(touchX, touchY);
+                }
                 drawPath.moveTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -69,11 +77,18 @@ public class DrawingView extends View {
             default:
                 return false;
         }
+
+        lastTouchX = touchX;
+        lastTouchY = touchY;
+
         invalidate();
         return true;
     }
 
     public void clear() {
+        lastTouchX = null;
+        lastTouchY = null;
+
         drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
         invalidate();
     }
